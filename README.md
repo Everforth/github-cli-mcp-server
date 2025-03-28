@@ -13,6 +13,7 @@
 - `npm install`
 - `docker build -t mcp/github-cli-mcp-server -f Dockerfile .`
 - add cursor configuration in mcp.json
+  - make sure to replace your `PERSONAL ACCESS TOKEN` in env.
 - restart cursor
 
 ```
