@@ -19,6 +19,12 @@ if (!PAT) {
 interface GraphqlRequestArgs {
   query: string;
 }
+// interface RestGetRequestArgs {
+//   owner?: string;
+//   repository?: string;
+//   path: string;
+//   query: string;
+// }
 
 // Create server instance
 const server = new Server(
@@ -35,6 +41,29 @@ const server = new Server(
 server.setRequestHandler(ListToolsRequestSchema, async () => {
   return {
     tools: [
+      // {
+      //   name: "rest_get_request",
+      //   description: "Make a GET request to GitHub REST API",
+      //   inputSchema: {
+      //     type: "object",
+      //     properties: {
+      //       owner: {
+      //         type: "string",
+      //         default: "Everforth",
+      //       },
+      //       repository: {
+      //         type: "string",
+      //         default: "pj-hotel-lovers-api",
+      //       },
+      //       path: {
+      //         type: "string",
+      //       },
+      //       query: {
+      //         type: "string",
+      //       },
+      //     },
+      //   },
+      // },
       {
         name: "graphql_request",
         description: "Make a GraphQL request to GitHub API",
@@ -54,6 +83,34 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
 server.setRequestHandler(
   CallToolRequestSchema,
   async (request: CallToolRequest) => {
+    // if (request.params.name === "rest_get_request") {
+    //   const args = request.params.arguments as unknown as RestGetRequestArgs;
+    //   const response = await fetch(
+    //     `https://api.github.com/repos/${args.owner ?? "Everforth"}/${
+    //       args.repository ?? "pj-hotel-lovers-api"
+    //     }/${args.path}?${args.query}`,
+    //     {
+    //       method: "GET",
+    //       headers: {
+    //         Authorization: `Bearer ${PAT}`,
+    //         Accept: "application/vnd.github+json",
+    //         "User-Agent": "github-rest-cli",
+    //       },
+    //     }
+    //   );
+    //   if (!response.ok) {
+    //     throw new Error(`REST GET request failed: ${response.statusText}`);
+    //   }
+    //   return {
+    //     content: [
+    //       {
+    //         type: "text",
+    //         text: JSON.stringify(await response.json()),
+    //       },
+    //     ],
+    //   };
+    // }
+
     if (request.params.name === "graphql_request") {
       const args = request.params.arguments as unknown as GraphqlRequestArgs;
       const parsedQuery = args.query

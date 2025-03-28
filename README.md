@@ -1,23 +1,24 @@
 # Everforth GitHub MCP Server
 
-- GitHubの基本的な情報取得は[公式MCP](https://github.com/modelcontextprotocol/servers/tree/main/src/github)を使う方が設定は楽そう
-- カンバン（ProjectV2）を使ったり、柔軟性の高いクエリを実行するならGraphQLベースのアクセスの方が便利
-- このMCP serverはgithubにgraphqlアクセスを投げるシンプルなもの
-  - Cursor Agentのターミナルからcurl実行させようとするとPersonal Access Tokenをセキュアに扱うのが難しそうだったため構築した
+- この MCP server は github に graphql アクセスを投げるシンプルなもの
+- Motivation
+  - アクセストークンをセキュアに扱う（Cursor Agent に与えない）
+  - 実は[公式 MCP](https://github.com/modelcontextprotocol/servers/tree/main/src/github)がまともに使えなかった & ProjectV2（カンバン）を使うならいずれにせよ graphql が必要
+- setup 時に一度 docker build してしまえば、それ以降は cursor 経由で docker の面倒を見てくれる
 
-## usage
+## setup
 
 - clone
 - cd to the cloned directory
 - `npm install`
 - `docker build -t mcp/github-cli-mcp-server -f Dockerfile .`
-
-## Cursor MCP config
+- add cursor configuration in mcp.json
+- restart cursor
 
 ```
 {
   "mcpServers": {
-    "github-graphql-cli": {
+    "github-cli": {
       "command": "docker",
       "args": [
         "run",
