@@ -4,7 +4,8 @@
 - Motivation
   - アクセストークンをセキュアに扱う（Cursor Agent に与えない）
   - 実は[公式 MCP](https://github.com/modelcontextprotocol/servers/tree/main/src/github)がまともに使えなかった & ProjectV2（カンバン）を使うならいずれにせよ graphql が必要
-- setup 時に一度 docker build してしまえば、それ以降は cursor 経由で docker の面倒を見てくれる
+- パブリックイメージを置いておいたのでCursorに設定するだけで使える
+  - Dockerfileも置いてあるので、好きにカスタマイズしてビルドして使ってOK
 
 ## How to use
 
