@@ -13,8 +13,11 @@
     "prepare": "npm run build",
     "watch": "tsc --watch"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "github",
+    "mcp"
+  ],
+  "author": "ikutani41",
   "license": "ISC",
   "description": "",
   "dependencies": {
