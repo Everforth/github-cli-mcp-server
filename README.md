@@ -35,5 +35,6 @@
 
 ## 自分でビルドして使いたい場合
 
-`npm install`
-`docker build -t {hoge}/github-cli-mcp-server -f Dockerfile .`
+- `npm install`
+- `docker build -t {hoge}/github-cli-mcp-server -f Dockerfile .`
+
